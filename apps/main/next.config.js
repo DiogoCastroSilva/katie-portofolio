@@ -15,6 +15,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  trailingSlash: true, // 👈 optional but helps with GitHub Pages routing
   // Use this to set Nx-specific options
   // See: https://nx.dev/recipes/next/next-config-setup
   nx: {},
