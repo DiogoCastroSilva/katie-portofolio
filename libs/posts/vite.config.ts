@@ -40,7 +40,18 @@ export default defineConfig(() => ({
     },
     rollupOptions: {
       // External packages that should not be bundled into your library.
-      external: ['react', 'react-dom', 'react/jsx-runtime'],
+      // Mark Node built-ins (fs, path) and server-only deps as external so
+      // the library build doesn't replace them with browser shims.
+      external: [
+        'react',
+        'react-dom',
+        'react/jsx-runtime',
+        // Node built-ins used by the posts library
+        'fs',
+        'path',
+        // keep gray-matter external so it's resolved at runtime
+        'gray-matter',
+      ],
     },
   },
 }));
