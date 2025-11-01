@@ -17,7 +17,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@katie-portofolio/posts": ["../../libs/posts/src/index.ts"],
+      "@katie-portofolio/posts/*": ["../../libs/posts/src/*"]
     },
     "types": ["jest", "node"],
     "outDir": "dist",
@@ -25,13 +27,14 @@
     "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo"
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.js",
-    "src/**/*.jsx",
     "../../apps/main/.next/types/**/*.ts",
     "../../dist/apps/main/.next/types/**/*.ts",
-    "next-env.d.ts"
+    "next-env.d.ts",
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "out-tsc",
@@ -44,5 +47,10 @@
     "eslint.config.js",
     "eslint.config.cjs",
     "eslint.config.mjs"
+  ],
+  "references": [
+    {
+      "path": "../../libs/posts"
+    }
   ]
 }

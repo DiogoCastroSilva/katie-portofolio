@@ -1,20 +1,36 @@
 //@ts-check
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { composePlugins, withNx } = require('@nx/next');
+const createMDX = require('@next/mdx');
 
 /**
  * @type {import('@nx/next/plugins/with-nx').WithNxOptions}
  **/
 const nextConfig = {
+  output: 'export', // For GitHub Pages
+  pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
+  experimental: {
+    mdxRs: true, // use Rust-based MDX compiler (faster)
+  },
+  images: {
+    unoptimized: true,
+  },
   // Use this to set Nx-specific options
   // See: https://nx.dev/recipes/next/next-config-setup
   nx: {},
 };
 
+const withMDX = createMDX({
+  options: {
+    remarkPlugins: [],
+    rehypePlugins: [],
+  },
+});
+
 const plugins = [
   // Add more Next.js plugins to this list if needed.
   withNx,
+  withMDX,
 ];
 
 module.exports = composePlugins(...plugins)(nextConfig);
