@@ -8,7 +8,10 @@ const createMDX = require('@next/mdx');
  **/
 const nextConfig = {
   output: 'export', // For GitHub Pages
+  distDir: 'dist',
   pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
+  basePath: '/katie-portofolio',
+  assetPrefix: '/katie-portofolio/',
   experimental: {
     mdxRs: true, // use Rust-based MDX compiler (faster)
   },
