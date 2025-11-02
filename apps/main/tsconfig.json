@@ -19,7 +19,9 @@
     "paths": {
       "@/*": ["./src/*"],
       "@katie-portofolio/posts": ["../../libs/posts/src/index.ts"],
-      "@katie-portofolio/posts/*": ["../../libs/posts/src/*"]
+      "@katie-portofolio/posts/*": ["../../libs/posts/src/*"],
+      "@katie-portofolio/navigation": ["../../libs/navigation/src/index.ts"],
+      "@katie-portofolio/navigation/*": ["../../libs/navigation/src/*"]
     },
     "types": ["jest", "node"],
     "outDir": "dist",
@@ -28,12 +30,13 @@
   "include": [
     "../../apps/main/.next/types/**/*.ts",
     "../../dist/apps/main/.next/types/**/*.ts",
+    ".next/types/**/*.ts",
     "next-env.d.ts",
     "src/**/*.js",
     "src/**/*.jsx",
     "src/**/*.ts",
     "src/**/*.tsx",
-    ".next/types/**/*.ts"
+    "../../public/types/**/*.ts"
   ],
   "exclude": [
     "out-tsc",
@@ -48,6 +51,9 @@
     "eslint.config.mjs"
   ],
   "references": [
+    {
+      "path": "../../libs/navigation"
+    },
     {
       "path": "../../libs/posts"
     }

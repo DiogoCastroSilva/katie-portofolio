@@ -8,6 +8,9 @@
     },
     {
       "path": "./libs/posts"
+    },
+    {
+      "path": "./libs/navigation"
     }
   ]
 }

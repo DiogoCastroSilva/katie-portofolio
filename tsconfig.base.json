@@ -19,7 +19,8 @@
     "target": "es2022",
     "customConditions": ["@katie-portofolio/source"],
     "paths": {
-      "@katie-portofolio/posts": ["libs/posts/src/index.ts"]
+      "@katie-portofolio/posts": ["libs/posts/src/index.ts"],
+      "@katie-portofolio/navigation": ["libs/navigation/src/index.ts"]
     }
   }
 }
