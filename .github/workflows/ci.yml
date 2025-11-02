@@ -71,6 +71,10 @@ jobs:
           echo "apps/main/out ->"; ls -la apps/main/out || echo "(no apps/main/out)"
           echo ".next ->"; ls -la apps/main/.next || echo "(no apps/main/.next)"
 
+      - name: Generate pages export (if needed)
+        run: |
+          node tools/generate-pages-export.js
+
       # Example for GitHub Pages deploy:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
