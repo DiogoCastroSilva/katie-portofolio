@@ -1,6 +1,5 @@
 import './global.css';
-
-import { NavBar } from '@katie-portofolio/navigation';
+import { NavBar } from '../components/client';
 
 export const metadata = {
   title: 'Welcome to ',
