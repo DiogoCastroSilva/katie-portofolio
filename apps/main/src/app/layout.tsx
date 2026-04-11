@@ -1,5 +1,5 @@
-import './global.css';
 import { NavBar } from '@katie-portofolio/navigation';
+import './global.css';
 
 export const metadata = {
   title: 'Welcome to ',
@@ -14,7 +14,7 @@ export default function RootLayout({
   // suppressHydrationWarning on <html>/<body>: extensions (e.g. Grammarly) add data-* attrs before hydrate.
   return (
     <html lang="en" suppressHydrationWarning>
-      <body suppressHydrationWarning>
+      <body suppressHydrationWarning className="bg-oatmeal dark:bg-background">
         <NavBar />
         {children}
       </body>

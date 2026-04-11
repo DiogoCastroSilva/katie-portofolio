@@ -20,8 +20,7 @@
       "@/*": ["./src/*"],
       "@katie-portofolio/posts": ["../../libs/posts/src/index.ts"],
       "@katie-portofolio/posts/*": ["../../libs/posts/src/*"],
-      "@katie-portofolio/navigation": ["../../libs/navigation/src/index.ts"],
-      "@katie-portofolio/navigation/*": ["../../libs/navigation/src/*"]
+      "@katie-portofolio/navigation": ["../../libs/navigation/src/index.ts"]
     },
     "types": ["jest", "node"],
     "outDir": "dist",
