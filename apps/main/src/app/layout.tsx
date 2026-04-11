@@ -14,7 +14,7 @@ export default function RootLayout({
   // suppressHydrationWarning on <html>/<body>: extensions (e.g. Grammarly) add data-* attrs before hydrate.
   return (
     <html lang="en" suppressHydrationWarning>
-      <body suppressHydrationWarning className="bg-oatmeal dark:bg-background">
+      <body suppressHydrationWarning className="bg-stone-100 dark:bg-slate-800">
         <NavBar />
         {children}
       </body>
