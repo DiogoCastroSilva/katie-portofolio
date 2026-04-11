@@ -2,6 +2,20 @@
   "name": "@katie-portofolio/main",
   "version": "0.0.1",
   "private": true,
+  "nx": {
+    "targets": {
+      "build": {
+        "options": {
+          "command": "next build --webpack"
+        }
+      },
+      "dev": {
+        "options": {
+          "command": "next dev --webpack"
+        }
+      }
+    }
+  },
   "dependencies": {
     "next": "16.2.3",
     "react": "^19.2.5",

@@ -1,5 +1,5 @@
 import './global.css';
-import { NavBar } from '../components/client';
+import { NavBar } from '@katie-portofolio/navigation';
 
 export const metadata = {
   title: 'Welcome to ',
@@ -11,9 +11,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // suppressHydrationWarning on <html>/<body>: extensions (e.g. Grammarly) add data-* attrs before hydrate.
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" suppressHydrationWarning>
+      <body suppressHydrationWarning>
         <NavBar />
         {children}
       </body>

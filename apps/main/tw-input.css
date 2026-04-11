@@ -1,0 +1,8 @@
+@import 'tailwindcss';
+/*
+  This file lives in `apps/main/`. One `..` is `apps/`, two `..` is the repo root,
+  so `../../libs/...` is the correct path to workspace libraries (not `../libs`).
+*/
+@source './src/**/*.{js,ts,jsx,tsx,md,mdx,html}';
+@source '../../libs/navigation/src/**/*.{js,ts,jsx,tsx,md,mdx,html}';
+@source '../../libs/posts/src/**/*.{js,ts,jsx,tsx,md,mdx,html}';

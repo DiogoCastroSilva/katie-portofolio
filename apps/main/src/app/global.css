@@ -1,6 +1,25 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import '../../tw-input.css';
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
 
 html {
   -webkit-text-size-adjust: 100%;
@@ -22,33 +41,25 @@ p,
 pre {
   margin: 0;
 }
-*,
-::before,
-::after {
-  box-sizing: border-box;
-  border-width: 0;
-  border-style: solid;
-  border-color: currentColor;
-}
 h1,
 h2 {
   font-size: inherit;
   font-weight: inherit;
 }
-a {
-  color: inherit;
-  text-decoration: inherit;
+
+@layer base {
+  a {
+    color: inherit;
+    text-decoration: inherit;
+  }
+  svg {
+    display: block;
+    vertical-align: middle;
+    shape-rendering: auto;
+    text-rendering: optimizeLegibility;
+  }
 }
-pre {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    Liberation Mono, Courier New, monospace;
-}
-svg {
-  display: block;
-  vertical-align: middle;
-  shape-rendering: auto;
-  text-rendering: optimizeLegibility;
-}
+
 pre {
   background-color: rgba(55, 65, 81, 1);
   border-radius: 0.25rem;
