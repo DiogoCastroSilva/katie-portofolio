@@ -1,5 +1,6 @@
 //@ts-check
 
+const path = require('path');
 const { composePlugins, withNx } = require('@nx/next');
 const createMDX = require('@next/mdx');
 
@@ -17,6 +18,9 @@ const nextConfig = {
     unoptimized: true,
   },
   trailingSlash: true, // 👈 optional but helps with GitHub Pages routing
+  turbopack: {
+    root: path.join(__dirname, '../..'),
+  },
   // Use this to set Nx-specific options
   // See: https://nx.dev/recipes/next/next-config-setup
   nx: {},
