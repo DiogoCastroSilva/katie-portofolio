@@ -15,6 +15,7 @@ export function MobileNavLinks({ currentPath, isMenuOpen }: NavBarProps) {
     >
       {navigation.map((item) => (
         <Link
+          key={item.name}
           href={item.href}
           aria-current={currentPath === item.href ? 'page' : undefined}
           className="px-3 block py-2 text-base font-medium dark:text-white hover:text-cyan-200 hover:bg-white/5"
