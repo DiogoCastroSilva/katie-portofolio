@@ -11,10 +11,12 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // suppressHydrationWarning on <html>/<body>: extensions (e.g. Grammarly) add data-* attrs before hydrate.
   return (
     <html lang="en" suppressHydrationWarning>
-      <body suppressHydrationWarning className="bg-stone-100 dark:bg-slate-800">
+      <body
+        suppressHydrationWarning
+        className="min-h-full bg-stone-100 dark:bg-slate-800"
+      >
         <NavBar />
         {children}
       </body>

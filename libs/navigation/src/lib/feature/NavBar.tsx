@@ -1,6 +1,9 @@
 'use client';
 
 import Link from 'next/link';
+import { useState } from 'react';
+import { MobileMenuButton } from '../ui/MobileMenuButton.js';
+import { MobileNavLinks } from '../ui/MobileNavLinks.js';
 import { navigation } from './config.js';
 
 type NavBarProps = {
@@ -8,6 +11,12 @@ type NavBarProps = {
 };
 
 export function NavBar({ currentPath }: NavBarProps) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
+
   return (
     <nav className="relative after:pointer-events-none after:absolute after:inset-x-0 ">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -24,7 +33,7 @@ export function NavBar({ currentPath }: NavBarProps) {
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-            <div className="flex space-x-4">
+            <div className="hidden md:flex space-x-4">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
@@ -36,9 +45,11 @@ export function NavBar({ currentPath }: NavBarProps) {
                 </Link>
               ))}
             </div>
+            <MobileMenuButton onToggleMenu={toggleMenu} />
           </div>
         </div>
       </div>
+      <MobileNavLinks currentPath={currentPath} isMenuOpen={isMenuOpen} />
     </nav>
   );
 }

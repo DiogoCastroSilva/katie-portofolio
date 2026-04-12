@@ -1,1 +1,1 @@
-export * from './lib/NavBar';
+export * from './lib/feature/NavBar';
