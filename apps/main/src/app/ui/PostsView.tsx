@@ -1,4 +1,4 @@
-import React from 'react';
+'use client';
 import type { PostMeta } from '@katie-portofolio/posts';
 
 type Props = {
