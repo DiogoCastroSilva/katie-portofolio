@@ -7,32 +7,32 @@ const ABOUT_CONTENT = `Highly analytical and results-oriented professional with 
 
 export const AboutSection = () => {
   return (
-    <section className="dark:bg-sky-50 rounded-2xl mx-4 p-6 sm:p-12">
+    <section className="mx-4 rounded-2xl p-6 sm:p-12 dark:bg-sky-50">
       <motion.div
-        className="flex flex-col md:flex-row flex-4 gap-4"
+        className="flex flex-4 flex-col gap-4 md:flex-row"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <div className="flex flex-col items-center sm:items-baseline sm:flex-col md:flex-col flex-4 gap-2">
+        <div className="flex flex-4 flex-col items-center gap-2 sm:flex-col sm:items-baseline md:flex-col">
           <Image
             src="/profile.jpeg"
             alt="Profile picture of Kathleen Miller"
             width={PROFILE_PIC_SIZE}
             height={PROFILE_PIC_SIZE}
             loading="eager"
-            className="w-42 h-42 sm:w-62 sm:h-62 md:w-30 md:h-30 lg:w-62 lg:h-62 rounded-full"
+            className="h-42 w-42 rounded-full sm:h-62 sm:w-62 md:h-30 md:w-30 lg:h-62 lg:w-62"
           />
-          <div className="flex flex-col text-wrap justify-center items-center">
+          <div className="flex flex-col items-center justify-center text-wrap">
             <h1 className="text-3xl font-bold">Kathleen Miller</h1>
-            <p className="text-lg text-gray-600 dark:text-gray-400 items-center">
+            <p className="items-center text-center text-lg text-gray-600 dark:text-gray-400">
               Passionate about science and nature-based solutions
             </p>
           </div>
         </div>
-        <div className="flex md:flex-col flex-12 gap-2 pt-2">
+        <div className="flex flex-12 gap-2 pt-2 md:flex-col">
           <h2 className="text-2xl font-bold">About Me</h2>
-          <p className="text-lg/8 text-gray-800 dark:text-gray-400 mt-4">
+          <p className="mt-4 indent-4 text-lg/8 text-gray-800 dark:text-gray-400">
             {ABOUT_CONTENT}
           </p>
         </div>

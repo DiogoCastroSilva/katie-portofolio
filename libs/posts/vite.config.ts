@@ -1,4 +1,5 @@
 /// <reference types='vitest' />
+import postcss from '@tailwindcss/postcss';
 import react from '@vitejs/plugin-react';
 import * as path from 'path';
 import { defineConfig } from 'vite';
@@ -14,6 +15,11 @@ export default defineConfig(() => ({
       tsconfigPath: path.join(__dirname, 'tsconfig.lib.json'),
     }),
   ],
+  css: {
+    postcss: {
+      plugins: [postcss()],
+    },
+  },
   // Uncomment this if you are using workers.
   // worker: {
   //  plugins: [],
