@@ -3,7 +3,7 @@ import { getAllProjects } from '@katie-portofolio/projects';
 import { AboutSection } from './ui/AboutSection';
 import { ContentCardSection } from './ui/ContentCardSection';
 
-export default async function Index() {
+export default function Index() {
   const projects = getAllProjects();
 
   return (

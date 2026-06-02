@@ -1,12 +1,9 @@
 import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
+import 'server-only';
 
-import {
-  ContentLibrary,
-  ContentLibraryConfig,
-  ContentMeta,
-} from './types';
+import { ContentLibrary, ContentLibraryConfig, ContentMeta } from './types';
 
 const IMAGE_EXTENSIONS = [
   '.jpg',
