@@ -11,12 +11,12 @@ export const AboutSection = () => {
   return (
     <section className="mx-4 rounded-2xl p-6 sm:p-12 dark:bg-sky-50">
       <motion.div
-        className="flex flex-4 flex-col gap-4 md:flex-row"
+        className="flex flex-col gap-4 md:flex-row"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <div className="flex flex-4 flex-col items-center gap-2 sm:flex-col sm:items-baseline md:flex-col">
+        <div className="flex flex-4 flex-col items-center gap-2 md:flex-6">
           <Image
             src={profileImage}
             alt="Profile picture of Kathleen Miller"
@@ -26,14 +26,14 @@ export const AboutSection = () => {
             className="h-42 w-42 rounded-full sm:h-62 sm:w-62 md:h-30 md:w-30 lg:h-62 lg:w-62"
           />
           <div className="flex flex-col items-center justify-center text-wrap">
-            <h1 className="text-3xl font-bold">Kathleen Miller</h1>
+            <h1 className="text-2xl lg:text-3xl font-bold">Kathleen Miller</h1>
             <p className="items-center text-center text-lg text-gray-600 dark:text-gray-400">
               Passionate about science and nature-based solutions
             </p>
           </div>
         </div>
-        <div className="flex flex-12 gap-2 pt-2 md:flex-col">
-          <h2 className="text-2xl font-bold">About Me</h2>
+        <div className="flex flex-12 flex-col gap-2 pt-2">
+          <h2 className="text-xl lg:text-2xl font-bold">About Me</h2>
           <p className="mt-4 indent-4 text-lg/8 text-gray-800 dark:text-gray-400">
             {ABOUT_CONTENT}
           </p>
