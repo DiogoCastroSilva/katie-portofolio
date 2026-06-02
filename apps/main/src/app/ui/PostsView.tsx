@@ -26,16 +26,14 @@ export default function PostsView({ posts }: Props) {
     <ul>
       {posts.map((post) => (
         <li key={post.slug}>
-          {post.imageSrc ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={post.imageSrc}
-              alt=""
-              width={320}
-              height={180}
-              className="mb-2 aspect-video w-full max-w-xs object-cover"
-            />
-          ) : null}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={post.imageSrc}
+            alt=""
+            width={320}
+            height={180}
+            className="mb-2 aspect-video w-full max-w-xs object-cover"
+          />
           <h2>{post.title}</h2>
           <p>{post.excerpt}</p>
           <time dateTime={post.date}>{formatPostDate(post.date)}</time>

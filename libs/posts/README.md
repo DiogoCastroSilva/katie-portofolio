@@ -22,7 +22,7 @@ image: hello-world.jpg
 | `date`    | Used to sort posts (newest first) |
 | `tags`    | Optional labels |
 | `excerpt` | Short summary on the home page |
-| `image`   | Cover image **filename** in this same `md` folder (e.g. `hello-world.jpg`). If omitted, the loader tries `{slug}.jpg`, `.png`, etc. |
+| `image`   | Cover image **filename** in this same `md` folder (e.g. `hello-world.jpg`). If omitted, the loader tries `{slug}.jpg`, `.png`, etc., then falls back to `post-placeholder.svg`. |
 
 Place the image file next to the markdown file, for example:
 

@@ -14,6 +14,9 @@ const IMAGE_EXTENSIONS = [
 
 export const POSTS_PUBLIC_PREFIX = '/posts';
 
+/** Synced from libs/posts/src/md; used when a post has no cover image. */
+export const DEFAULT_POST_IMAGE = `${POSTS_PUBLIC_PREFIX}/post-placeholder.svg`;
+
 function fileExistsInPostsDir(filename: string): boolean {
   const resolved = path.join(POSTS_PATH, filename);
   if (!resolved.startsWith(POSTS_PATH)) {
@@ -25,7 +28,7 @@ function fileExistsInPostsDir(filename: string): boolean {
 export function resolvePostImage(
   slug: string,
   image?: string,
-): string | undefined {
+): string {
   if (image?.trim()) {
     const filename = path.basename(image.trim());
 
@@ -41,7 +44,7 @@ export function resolvePostImage(
     }
   }
 
-  return undefined;
+  return DEFAULT_POST_IMAGE;
 }
 
 export function listPostImageFilenames(): string[] {
