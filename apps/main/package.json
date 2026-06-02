@@ -12,13 +12,17 @@
         }
       },
       "build": {
-        "dependsOn": ["sync-content-assets"],
+        "dependsOn": [
+          "sync-content-assets"
+        ],
         "options": {
           "command": "next build --webpack"
         }
       },
       "dev": {
-        "dependsOn": ["sync-content-assets"],
+        "dependsOn": [
+          "sync-content-assets"
+        ],
         "options": {
           "command": "next dev --webpack"
         }
@@ -30,6 +34,7 @@
     "@katie-portofolio/navigation": "*",
     "@katie-portofolio/projects": "*",
     "@katie-portofolio/publications": "*",
+    "@katie-portofolio/utils": "*",
     "next": "16.2.3",
     "react": "^19.2.5",
     "react-dom": "^19.2.5"

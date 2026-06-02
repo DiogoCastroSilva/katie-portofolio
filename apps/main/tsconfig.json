@@ -21,7 +21,9 @@
       "@katie-portofolio/content": ["../../libs/content/src/index.ts"],
       "@katie-portofolio/projects": ["../../libs/projects/src/index.ts"],
       "@katie-portofolio/projects/*": ["../../libs/projects/src/*"],
-      "@katie-portofolio/publications": ["../../libs/publications/src/index.ts"],
+      "@katie-portofolio/publications": [
+        "../../libs/publications/src/index.ts"
+      ],
       "@katie-portofolio/publications/*": ["../../libs/publications/src/*"],
       "@katie-portofolio/navigation": ["../../libs/navigation/src/index.ts"]
     },
@@ -54,16 +56,19 @@
   ],
   "references": [
     {
-      "path": "../../libs/navigation"
+      "path": "../../libs/utils"
     },
     {
-      "path": "../../libs/content"
+      "path": "../../libs/publications"
     },
     {
       "path": "../../libs/projects"
     },
     {
-      "path": "../../libs/publications"
+      "path": "../../libs/navigation"
+    },
+    {
+      "path": "../../libs/content"
     }
   ]
 }

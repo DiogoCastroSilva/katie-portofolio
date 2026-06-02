@@ -1,5 +1,6 @@
 'use client';
 import type { ContentMeta } from '@katie-portofolio/content';
+import { dates } from '@katie-portofolio/utils';
 import { AnimatePresence, motion } from 'motion/react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -70,6 +71,9 @@ export function ContentCardSection({
                     />
                   </div>
                   <div className="p-4">
+                    <time dateTime={item.date}>
+                      {dates.formatISODate(item.date)}
+                    </time>
                     <h3 className="mb-2 text-xl font-semibold group-hover:underline">
                       {item.title}
                     </h3>
