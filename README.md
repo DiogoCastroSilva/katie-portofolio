@@ -53,6 +53,7 @@ npx nx format:write
 
 - If posts are not visible in production, make sure you ran the prepare/copy step so `apps/main/public/md` (or `.next/server/md`) contains the files.
 - If imports like `@katie-portofolio/posts` fail during build, ensure your `tsconfig` path mappings point to `../../libs/posts/src/index.ts` (this project uses TS path mapping for local package resolution in dev).
+- Profile photo: replace `apps/main/src/assets/profile.svg` with a JPEG/PNG import, or add `apps/main/public/profile.jpeg` and point `AboutSection` at `/profile.jpeg`.
 
 ## License
 

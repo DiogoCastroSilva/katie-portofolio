@@ -46,7 +46,7 @@ Thumbs.db
 # Next.js
 .next
 out
-public
+/public
 
 test-output
 vite.config.*.timestamp*

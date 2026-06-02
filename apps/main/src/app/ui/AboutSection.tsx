@@ -2,6 +2,8 @@
 import { motion } from 'motion/react';
 import Image from 'next/image';
 
+import profileImage from '../../assets/profile.svg';
+
 const PROFILE_PIC_SIZE = 400;
 const ABOUT_CONTENT = `Highly analytical and results-oriented professional with extensive experience in optimization and network modelling, strategy development, and data analysis. Demonstrated ability to define and implement innovative processes and solutions, collaborate with diverse stakeholders, and manage complex analytical models. Passionate about developing data-driven solutions to support climate change mitigation and adaptation strategies.`;
 
@@ -16,7 +18,7 @@ export const AboutSection = () => {
       >
         <div className="flex flex-4 flex-col items-center gap-2 sm:flex-col sm:items-baseline md:flex-col">
           <Image
-            src="/profile.jpeg"
+            src={profileImage}
             alt="Profile picture of Kathleen Miller"
             width={PROFILE_PIC_SIZE}
             height={PROFILE_PIC_SIZE}
