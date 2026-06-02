@@ -1,22 +1,22 @@
 import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
-import { POST_PATH } from './path';
+import { toPostMeta } from './post-meta';
+import { POSTS_PATH } from './path';
 import { PostMeta } from './types';
 
-export async function getPostBySlug(slug: string): Promise<PostMeta> {
-  const postPath = POST_PATH(slug);
-  return fs
-    .readdirSync(postPath)
-    .filter((file) => file.endsWith('.md') || file.endsWith('.mdx'))
-    .map((file) => {
-      const filePath = path.join(postPath, file);
-      const content = fs.readFileSync(filePath, 'utf-8');
-      const { data } = matter(content);
-
-      return {
-        slug: file.replace(/\.mdx?$/, ''),
-        ...data,
-      } as PostMeta;
-    })?.[0];
+export async function getPostBySlug(
+  slug: string
+): Promise<PostMeta | undefined> {
+  for (const ext of ['.md', '.mdx'] as const) {
+    const fileName = `${slug}${ext}`;
+    const filePath = path.join(POSTS_PATH, fileName);
+    if (!fs.existsSync(filePath)) {
+      continue;
+    }
+    const content = fs.readFileSync(filePath, 'utf-8');
+    const { data } = matter(content);
+    return toPostMeta(fileName, data as Record<string, unknown>);
+  }
+  return undefined;
 }

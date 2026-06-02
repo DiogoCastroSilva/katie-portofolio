@@ -4,12 +4,21 @@
   "private": true,
   "nx": {
     "targets": {
+      "sync-post-assets": {
+        "executor": "nx:run-commands",
+        "options": {
+          "command": "node tools/sync-post-assets.mjs",
+          "cwd": "{workspaceRoot}"
+        }
+      },
       "build": {
+        "dependsOn": ["sync-post-assets"],
         "options": {
           "command": "next build --webpack"
         }
       },
       "dev": {
+        "dependsOn": ["sync-post-assets"],
         "options": {
           "command": "next dev --webpack"
         }

@@ -33,6 +33,16 @@ npm run dev # if you add a script that forwards to nx
 
 3. Open http://localhost:3000
 
+### Post cover images
+
+Put images next to each post in `libs/posts/src/md` (see `libs/posts/README.md` for frontmatter). After adding or changing an image, sync it into the Next app:
+
+```bash
+npx nx run main:sync-post-assets
+```
+
+`main:dev` and `main:build` run this automatically. If you start Next without Nx, run the command above or image URLs will 404.
+
 ### Tests & CI
 
 - Jest is configured at the workspace root. The jest config allows the test run to pass when there are no tests (`passWithNoTests`).
@@ -51,7 +61,7 @@ npx nx format:write
 
 ## Troubleshooting
 
-- If posts are not visible in production, make sure you ran the prepare/copy step so `apps/main/public/md` (or `.next/server/md`) contains the files.
+- Post cover images live in `libs/posts/src/md` next to each `.md` file. Sync with `npx nx run main:sync-post-assets` (or use `main:dev` / `main:build`, which run sync first).
 - If imports like `@katie-portofolio/posts` fail during build, ensure your `tsconfig` path mappings point to `../../libs/posts/src/index.ts` (this project uses TS path mapping for local package resolution in dev).
 - Profile photo: replace `apps/main/src/assets/profile.svg` with a JPEG/PNG import, or add `apps/main/public/profile.jpeg` and point `AboutSection` at `/profile.jpeg`.
 

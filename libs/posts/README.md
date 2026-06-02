@@ -12,10 +12,33 @@ title: 'Hello World'
 date: '2025-11-01'
 tags: ['intro', 'welcome']
 excerpt: 'My first post!'
+image: hello-world.jpg
 ---
 ```
 
-This metadata is matching what we want to render in the UI. The date will be also used to render the files by order of when it was published.
+| Field     | Description |
+| --------- | ----------- |
+| `title`   | Card and post heading |
+| `date`    | Used to sort posts (newest first) |
+| `tags`    | Optional labels |
+| `excerpt` | Short summary on the home page |
+| `image`   | Cover image **filename** in this same `md` folder (e.g. `hello-world.jpg`). If omitted, the loader tries `{slug}.jpg`, `.png`, etc. |
+
+Place the image file next to the markdown file, for example:
+
+```
+src/md/
+  hello-world.md
+  hello-world.jpg
+```
+
+After adding or changing an image, sync it into the Next app:
+
+```bash
+npx nx run main:sync-post-assets
+```
+
+`main:dev` and `main:build` run this automatically. If you start Next without Nx, run the sync command once or the image URLs will 404.
 
 After the metadata it will be the post content.
 
