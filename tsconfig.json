@@ -7,7 +7,13 @@
       "path": "./apps/main"
     },
     {
-      "path": "./libs/posts"
+      "path": "./libs/content"
+    },
+    {
+      "path": "./libs/projects"
+    },
+    {
+      "path": "./libs/publications"
     },
     {
       "path": "./libs/navigation"

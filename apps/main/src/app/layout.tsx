@@ -4,7 +4,7 @@ import './global.css';
 export const metadata = {
   title: 'Kathleen Miller',
   description:
-    'Portfolio of Kathleen Miller — science, nature-based solutions, and research posts.',
+    'Portfolio of Kathleen Miller — science, nature-based solutions, projects, and publications.',
 };
 
 export default function RootLayout({

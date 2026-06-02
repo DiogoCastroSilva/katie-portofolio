@@ -18,8 +18,11 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@katie-portofolio/posts": ["../../libs/posts/src/index.ts"],
-      "@katie-portofolio/posts/*": ["../../libs/posts/src/*"],
+      "@katie-portofolio/content": ["../../libs/content/src/index.ts"],
+      "@katie-portofolio/projects": ["../../libs/projects/src/index.ts"],
+      "@katie-portofolio/projects/*": ["../../libs/projects/src/*"],
+      "@katie-portofolio/publications": ["../../libs/publications/src/index.ts"],
+      "@katie-portofolio/publications/*": ["../../libs/publications/src/*"],
       "@katie-portofolio/navigation": ["../../libs/navigation/src/index.ts"]
     },
     "types": ["jest", "node"],
@@ -54,7 +57,13 @@
       "path": "../../libs/navigation"
     },
     {
-      "path": "../../libs/posts"
+      "path": "../../libs/content"
+    },
+    {
+      "path": "../../libs/projects"
+    },
+    {
+      "path": "../../libs/publications"
     }
   ]
 }

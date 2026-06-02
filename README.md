@@ -2,12 +2,15 @@
 
 This monorepo contains Katie's portfolio web application.
 
-The project uses NX to manage the workspace and Next.js (App Router) for the frontend. MDX support is enabled so posts can be written in `.md` / `.mdx` files.
+The project uses NX to manage the workspace and Next.js (App Router) for the frontend. MDX support is enabled so content can be written in `.md` / `.mdx` files.
 
-Key locations
+## Key locations
 
 - `apps/main` — the Next.js application (app router)
-- `libs/posts` — a small shared library that reads markdown posts from `libs/posts/src/md`
+- `libs/content` — shared markdown loader (frontmatter, images, sorting)
+- `libs/projects` — portfolio projects (`libs/projects/src/md`)
+- `libs/publications` — publications content (`libs/publications/src/md`, TBD)
+- `libs/navigation` — site navigation
 
 ## Technologies
 
@@ -27,26 +30,21 @@ npm install
 
 ```bash
 npx nx run main:dev
-# or
-npm run dev # if you add a script that forwards to nx
 ```
 
 3. Open http://localhost:3000
 
-### Post cover images
+### Content cover images
 
-Put images next to each post in `libs/posts/src/md` (see `libs/posts/README.md` for frontmatter). After adding or changing an image, sync it into the Next app:
+Put images next to each markdown file in `libs/projects/src/md` or `libs/publications/src/md`. After adding or changing an image, sync assets into the Next app:
 
 ```bash
-npx nx run main:sync-post-assets
+npx nx run main:sync-content-assets
 ```
 
-`main:dev` and `main:build` run this automatically. If you start Next without Nx, run the command above or image URLs will 404.
+`main:dev` and `main:build` run this automatically.
 
 ### Tests & CI
-
-- Jest is configured at the workspace root. The jest config allows the test run to pass when there are no tests (`passWithNoTests`).
-- To run tests:
 
 ```bash
 npx nx test
@@ -61,9 +59,9 @@ npx nx format:write
 
 ## Troubleshooting
 
-- Post cover images live in `libs/posts/src/md` next to each `.md` file. Sync with `npx nx run main:sync-post-assets` (or use `main:dev` / `main:build`, which run sync first).
-- If imports like `@katie-portofolio/posts` fail during build, ensure your `tsconfig` path mappings point to `../../libs/posts/src/index.ts` (this project uses TS path mapping for local package resolution in dev).
-- Profile photo: replace `apps/main/src/assets/profile.svg` with a JPEG/PNG import, or add `apps/main/public/profile.jpeg` and point `AboutSection` at `/profile.jpeg`.
+- Cover images are synced from `libs/*/src/md` to `apps/main/public/{projects,publications}`. Run `npx nx run main:sync-content-assets` if images 404.
+- If imports like `@katie-portofolio/projects` fail during build, ensure `tsconfig` path mappings point at the library `src/index.ts` files.
+- Profile photo: replace `apps/main/src/assets/profile.jpeg` or update `AboutSection`.
 
 ## License
 

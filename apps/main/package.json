@@ -4,21 +4,21 @@
   "private": true,
   "nx": {
     "targets": {
-      "sync-post-assets": {
+      "sync-content-assets": {
         "executor": "nx:run-commands",
         "options": {
-          "command": "node tools/sync-post-assets.mjs",
+          "command": "node tools/sync-content-assets.mjs",
           "cwd": "{workspaceRoot}"
         }
       },
       "build": {
-        "dependsOn": ["sync-post-assets"],
+        "dependsOn": ["sync-content-assets"],
         "options": {
           "command": "next build --webpack"
         }
       },
       "dev": {
-        "dependsOn": ["sync-post-assets"],
+        "dependsOn": ["sync-content-assets"],
         "options": {
           "command": "next dev --webpack"
         }
@@ -26,8 +26,10 @@
     }
   },
   "dependencies": {
+    "@katie-portofolio/content": "*",
     "@katie-portofolio/navigation": "*",
-    "@katie-portofolio/posts": "*",
+    "@katie-portofolio/projects": "*",
+    "@katie-portofolio/publications": "*",
     "next": "16.2.3",
     "react": "^19.2.5",
     "react-dom": "^19.2.5"

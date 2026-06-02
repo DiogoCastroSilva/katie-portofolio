@@ -1,15 +1,20 @@
-import { getAllPosts } from '@katie-portofolio/posts';
+import { getAllProjects } from '@katie-portofolio/projects';
 
 import { AboutSection } from './ui/AboutSection';
-import { PostSection } from './ui/PostSection';
+import { ContentCardSection } from './ui/ContentCardSection';
 
 export default async function Index() {
-  const posts = await getAllPosts();
+  const projects = getAllProjects();
 
   return (
-    <main className="flex flex-col gap-4 grow">
+    <main className="flex grow flex-col gap-4">
       <AboutSection />
-      <PostSection posts={posts} />
+      <ContentCardSection
+        heading="Projects"
+        headingId="projects-heading"
+        items={projects}
+        hrefPrefix="/projects"
+      />
     </main>
   );
 }

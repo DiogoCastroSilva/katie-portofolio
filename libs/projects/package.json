@@ -1,5 +1,5 @@
 {
-  "name": "@katie-portofolio/posts",
+  "name": "@katie-portofolio/projects",
   "version": "0.0.1",
   "private": true,
   "type": "module",
@@ -12,5 +12,8 @@
       "default": "./src/index.ts"
     },
     "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "@katie-portofolio/content": "*"
   }
 }

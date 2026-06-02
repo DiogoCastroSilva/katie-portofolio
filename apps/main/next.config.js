@@ -10,7 +10,12 @@ const createMDX = require('@next/mdx');
 const nextConfig = {
   output: 'export', // For GitHub Pages
   distDir: '../../public',
-  transpilePackages: ['@katie-portofolio/posts', '@katie-portofolio/navigation'],
+  transpilePackages: [
+    '@katie-portofolio/content',
+    '@katie-portofolio/projects',
+    '@katie-portofolio/publications',
+    '@katie-portofolio/navigation',
+  ],
   pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
   experimental: {
     mdxRs: true, // use Rust-based MDX compiler (faster)

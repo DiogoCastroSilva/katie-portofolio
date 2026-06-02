@@ -47,8 +47,10 @@ Thumbs.db
 .next
 out
 /public
-apps/main/public/posts/*
-!apps/main/public/posts/.gitkeep
+apps/main/public/projects/*
+!apps/main/public/projects/.gitkeep
+apps/main/public/publications/*
+!apps/main/public/publications/.gitkeep
 
 test-output
 vite.config.*.timestamp*
