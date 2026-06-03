@@ -9,7 +9,6 @@ type ContentCardSectionProps = {
   heading: string;
   headingId: string;
   items: ContentMeta[];
-  /** URL prefix for item detail pages, e.g. `/projects`. */
   hrefPrefix: string;
   limit?: number;
   emptyMessage?: string;
@@ -26,17 +25,17 @@ export function ContentCardSection({
   items,
   hrefPrefix,
   limit = 6,
-  tagsLimit = 3,
-  emptyMessage,
+  tagsLimit = 2,
+  emptyMessage = 'No items to display at this time.',
 }: ContentCardSectionProps) {
   const visibleItems = items.slice(0, limit);
 
   return (
     <section
       className="mx-4 rounded-2xl p-12 dark:bg-sky-50"
-      aria-labelledby={headingId}
+      aria-labelledby={headingId ?? heading}
     >
-      <h2 id={headingId} className="mb-6 text-2xl font-bold">
+      <h2 id={headingId ?? heading} className="mb-6 text-2xl font-bold">
         {heading}
       </h2>
       {visibleItems.length === 0 && emptyMessage ? (

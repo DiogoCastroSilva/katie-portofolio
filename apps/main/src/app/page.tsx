@@ -1,10 +1,12 @@
 import { getAllProjects } from '@katie-portofolio/projects';
+import { getAllPublications } from '@katie-portofolio/publications';
 
 import { AboutSection } from './ui/AboutSection';
 import { ContentCardSection } from './ui/ContentCardSection';
 
 export default function Index() {
   const projects = getAllProjects();
+  const publications = getAllPublications();
 
   return (
     <main className="flex grow flex-col gap-4">
@@ -14,6 +16,12 @@ export default function Index() {
         headingId="projects-heading"
         items={projects}
         hrefPrefix="/projects"
+      />
+      <ContentCardSection
+        heading="Publications"
+        headingId="publications-heading"
+        items={publications}
+        hrefPrefix="/publications"
       />
     </main>
   );
