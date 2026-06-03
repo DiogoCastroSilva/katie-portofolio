@@ -13,6 +13,7 @@ type ContentCardSectionProps = {
   hrefPrefix: string;
   limit?: number;
   emptyMessage?: string;
+  tagsLimit?: number;
 };
 
 function itemHref(prefix: string, slug: string): string {
@@ -25,6 +26,7 @@ export function ContentCardSection({
   items,
   hrefPrefix,
   limit = 6,
+  tagsLimit = 3,
   emptyMessage,
 }: ContentCardSectionProps) {
   const visibleItems = items.slice(0, limit);
@@ -50,41 +52,53 @@ export function ContentCardSection({
             {visibleItems.map((item, index) => (
               <motion.article
                 key={item.slug}
-                className="overflow-hidden rounded-lg bg-white shadow-md dark:bg-gray-800"
+                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <Link
                   href={itemHref(hrefPrefix, item.slug)}
-                  className="group block rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+                  className="group block rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
                   aria-label={`Read more: ${item.title}`}
                 >
-                  <div className="relative aspect-[16/9] w-full bg-stone-200 dark:bg-stone-700">
+                  <div className="relative aspect-[16/9] w-full overflow-hidden bg-stone-200 dark:bg-stone-700">
                     <Image
                       src={item.imageSrc}
                       alt=""
+                      loading="eager"
                       fill
                       aria-hidden
-                      className="object-cover"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                   </div>
                   <div className="p-4">
-                    <time dateTime={item.date}>
-                      {dates.formatISODate(item.date)}
-                    </time>
-                    <h3 className="mb-2 text-xl font-semibold group-hover:underline">
-                      {item.title}
-                    </h3>
-                    {item.excerpt ? (
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
-                        {item.excerpt}
-                      </p>
-                    ) : null}
-                    <span className="mt-4 inline-block text-blue-500 group-hover:underline">
-                      Read more
-                    </span>
+                    <div className="flex gap-2">
+                      <time dateTime={item.date}>
+                        {dates.formatISODate(item.date)}
+                      </time>
+                      <ul className="flex flex-wrap gap-2">
+                        {item.tags?.slice(0, tagsLimit).map((tag) => (
+                          <li
+                            key={tag}
+                            className="rounded-full border border-zinc-200 px-2.5 py-1 text-xs font-medium text-zinc-600 dark:border-zinc-700 dark:text-zinc-400"
+                          >
+                            {tag}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="flex flex-1 flex-col">
+                      <h3 className="tracking-tightmb-2 line-clamp-2 text-xl leading-tight font-semibold tracking-tight transition-all duration-300 group-hover:-translate-y-1 group-hover:underline">
+                        {item.title}
+                      </h3>
+                      {item.excerpt ? (
+                        <p className="line-clamp-3 text-sm leading-6 text-zinc-600 dark:text-gray-400">
+                          {item.excerpt}
+                        </p>
+                      ) : null}
+                    </div>
                   </div>
                 </Link>
               </motion.article>
