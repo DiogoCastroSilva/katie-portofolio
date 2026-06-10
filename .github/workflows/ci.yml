@@ -35,7 +35,6 @@ jobs:
         if: always()
         run: npx nx fix-ci
 
-
   # 2️⃣ Deploy job – runs only if CI passes
   deploy:
     runs-on: ubuntu-latest
@@ -61,6 +60,18 @@ jobs:
 
       - name: Ensure Nx is available
         run: npx nx --version
+
+      - name: Set deployment URL for GitHub Pages
+        run: |
+          REPO="${GITHUB_REPOSITORY}"
+          OWNER="${REPO%%/*}"
+          NAME="${REPO#*/}"
+          if [ "$NAME" = "${OWNER}.github.io" ]; then
+            URL="https://${OWNER}.github.io"
+          else
+            URL="https://${OWNER}.github.io/${NAME}"
+          fi
+          echo "NEXT_PUBLIC_DEPLOYMENT_URL=$URL" >> $GITHUB_ENV
 
       # ✅ Build and export Next.js app the Nx way
       - name: Build Next.js app

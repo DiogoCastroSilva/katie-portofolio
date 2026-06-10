@@ -3,6 +3,7 @@ import matter from 'gray-matter';
 import { marked } from 'marked';
 import path from 'path';
 import 'server-only';
+import { DEPLOYMENT_PLACEHOLDER, getDeploymentUrl } from './constants';
 
 import {
   ContentItemMeta,
@@ -158,7 +159,46 @@ export function createContentLibrary(
           fileName,
           data as Record<string, unknown>,
         );
-        const htmlBody = await marked(body);
+
+        let htmlBody = await marked(body);
+
+        // Post-process: rewrite relative image paths to absolute URLs
+        // Matches: src="filename.ext" or src='filename.ext' (not starting with / or http)
+        htmlBody = htmlBody.replace(
+          /src=["'](?!\/|https?:)([^"']+)["']/g,
+          (match, imagePath) => `src="${config.publicPrefix}/${imagePath}"`,
+        );
+
+        // Post-process: rewrite relative link hrefs to use the publicPrefix
+        // Skip absolute URLs (http/https), anchors (#), and mailto links
+        htmlBody = htmlBody.replace(
+          /href=["'](?!\/|https?:|mailto:|#)([^"']+)["']/g,
+          (match, linkPath) => `href="${config.publicPrefix}/${linkPath}"`,
+        );
+
+        // Determine deployment URL using shared helper
+        const deploymentUrl = getDeploymentUrl();
+
+        // Replace placeholder hrefs (e.g. [Name](DEPLOYMENT_URL)) or empty hrefs with the deployment URL when available
+        if (deploymentUrl) {
+          const ph = DEPLOYMENT_PLACEHOLDER;
+          htmlBody = htmlBody.replace(
+            new RegExp(`href=("|')${ph}\\1`, 'g'),
+            `href="${deploymentUrl}"`,
+          );
+          htmlBody = htmlBody.replace(
+            /href=("|')\1/g,
+            `href="${deploymentUrl}"`,
+          );
+        }
+
+        // Ensure external links open safely in a new tab and mark them
+        htmlBody = htmlBody.replace(
+          /<a\s+href=("|')(https?:\/\/[^"']+)\1/g,
+          (match, q, url) =>
+            `<a href=${q}${url}${q} class="external-link" target="_blank" rel="noopener noreferrer"`,
+        );
+
         return { ...meta, body: htmlBody };
       }
       return undefined;

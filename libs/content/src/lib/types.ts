@@ -4,6 +4,10 @@ export interface ContentMeta {
   date: string;
   tags?: string[];
   excerpt?: string;
+  /** Optional team or authors listed for the content. */
+  team?: string;
+  /** Optional array of related links (paper, presentation, etc.). */
+  links?: string[];
   /** Cover image filename in the content `md` folder (same folder as the `.md` file). */
   image?: string;
   /** URL served by the Next app, set when content is loaded. */

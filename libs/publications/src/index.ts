@@ -1,7 +1,7 @@
 import {
   createContentLibrary,
-  type ContentMeta,
   type ContentItemMeta,
+  type ContentMeta,
 } from '@katie-portofolio/content';
 
 export type PublicationMeta = ContentMeta;

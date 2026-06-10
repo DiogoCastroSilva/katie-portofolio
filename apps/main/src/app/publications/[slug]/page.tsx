@@ -1,4 +1,7 @@
-import { getAllPublications, getPublicationContentBySlug } from '@katie-portofolio/publications';
+import {
+  getAllPublications,
+  getPublicationContentBySlug,
+} from '@katie-portofolio/publications';
 import { notFound } from 'next/navigation';
 import { ContentDetail } from '../../ui/ContentDetail';
 
@@ -28,7 +31,9 @@ export async function generateMetadata({ params }: PublicationPageProps) {
   };
 }
 
-export default async function PublicationPage({ params }: PublicationPageProps) {
+export default async function PublicationPage({
+  params,
+}: PublicationPageProps) {
   const { slug } = await params;
   const publication = await getPublicationContentBySlug(slug);
 
