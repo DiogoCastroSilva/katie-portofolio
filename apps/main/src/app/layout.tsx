@@ -1,5 +1,6 @@
 import { NavBar } from '@katie-portofolio/navigation';
 import './global.css';
+import { Footer } from './ui/Footer';
 
 export const metadata = {
   title: 'Kathleen Miller',
@@ -18,8 +19,11 @@ export default function RootLayout({
         suppressHydrationWarning
         className="min-h-full bg-stone-100 dark:bg-slate-800"
       >
-        <NavBar />
-        {children}
+        <div className="flex min-h-full flex-col">
+          <NavBar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );
