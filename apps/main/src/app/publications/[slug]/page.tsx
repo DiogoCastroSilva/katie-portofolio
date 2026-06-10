@@ -42,7 +42,7 @@ export default async function PublicationPage({
   }
 
   return (
-    <main className="flex grow flex-col">
+    <main className="mx-4 flex grow flex-col rounded-2xl dark:bg-sky-50">
       <ContentDetail content={publication} />
     </main>
   );

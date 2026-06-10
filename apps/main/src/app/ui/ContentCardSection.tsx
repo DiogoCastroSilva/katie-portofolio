@@ -32,14 +32,17 @@ export function ContentCardSection({
 
   return (
     <section
-      className="mx-4 rounded-2xl p-12 dark:bg-sky-50"
+      className="mx-4 rounded-2xl bg-white p-12 text-slate-900 shadow-sm dark:bg-sky-50"
       aria-labelledby={headingId ?? heading}
     >
-      <h2 id={headingId ?? heading} className="mb-6 text-2xl font-bold">
+      <h2
+        id={headingId ?? heading}
+        className="mb-6 text-2xl font-bold text-slate-900"
+      >
         {heading}
       </h2>
       {visibleItems.length === 0 && emptyMessage ? (
-        <p className="text-gray-600 dark:text-gray-400">{emptyMessage}</p>
+        <p className="text-slate-700 dark:text-gray-400">{emptyMessage}</p>
       ) : (
         <motion.div
           className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
