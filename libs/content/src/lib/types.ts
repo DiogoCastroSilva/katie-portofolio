@@ -10,6 +10,10 @@ export interface ContentMeta {
   imageSrc: string;
 }
 
+export interface ContentItemMeta extends ContentMeta {
+  body: string;
+}
+
 export interface ContentLibraryConfig {
   /** Workspace-relative path to markdown files, e.g. `libs/projects/src/md`. */
   mdDir: string;
@@ -22,4 +26,5 @@ export interface ContentLibraryConfig {
 export interface ContentLibrary {
   getAll: () => ContentMeta[];
   getBySlug: (slug: string) => ContentMeta | undefined;
+  getContentBySlug: (slug: string) => Promise<ContentItemMeta | undefined>;
 }

@@ -1,9 +1,15 @@
 import fs from 'fs';
 import matter from 'gray-matter';
+import { marked } from 'marked';
 import path from 'path';
 import 'server-only';
 
-import { ContentLibrary, ContentLibraryConfig, ContentMeta } from './types';
+import {
+  ContentItemMeta,
+  ContentLibrary,
+  ContentLibraryConfig,
+  ContentMeta,
+} from './types';
 
 const IMAGE_EXTENSIONS = [
   '.jpg',
@@ -133,5 +139,31 @@ export function createContentLibrary(
     return undefined;
   }
 
-  return { getAll, getBySlug };
+  function getContentBySlug(
+    slug: string,
+  ): Promise<ContentItemMeta | undefined> {
+    return (async () => {
+      for (const ext of ['.md', '.mdx'] as const) {
+        const fileName = `${slug}${ext}`;
+        const filePath = path.join(contentPath, fileName);
+        if (!fs.existsSync(filePath)) {
+          continue;
+        }
+        const content = fs.readFileSync(filePath, 'utf-8');
+        const { data, content: body } = matter(content);
+        const meta = toContentMeta(
+          contentPath,
+          config.publicPrefix,
+          config.placeholderFilename,
+          fileName,
+          data as Record<string, unknown>,
+        );
+        const htmlBody = await marked(body);
+        return { ...meta, body: htmlBody };
+      }
+      return undefined;
+    })();
+  }
+
+  return { getAll, getBySlug, getContentBySlug };
 }

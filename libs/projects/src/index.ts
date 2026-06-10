@@ -1,9 +1,11 @@
 import {
   createContentLibrary,
   type ContentMeta,
+  type ContentItemMeta,
 } from '@katie-portofolio/content';
 
 export type ProjectMeta = ContentMeta;
+export type ProjectItemMeta = ContentItemMeta;
 
 const projects = createContentLibrary({
   mdDir: 'libs/projects/src/md',
@@ -13,3 +15,4 @@ const projects = createContentLibrary({
 
 export const getAllProjects = projects.getAll;
 export const getProjectBySlug = projects.getBySlug;
+export const getProjectContentBySlug = projects.getContentBySlug;
