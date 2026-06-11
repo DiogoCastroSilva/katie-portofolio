@@ -1,8 +1,32 @@
 export const DEPLOYMENT_PLACEHOLDER = 'DEPLOYMENT_URL';
 
+const GITHUB_PAGES_BASE_PATH = '/katie-portofolio';
+
+function normalizeBasePath(basePath?: string): string {
+  if (!basePath?.trim() || basePath === '/') {
+    return '';
+  }
+
+  return `/${basePath.trim().replace(/^\/+|\/+$/g, '')}`;
+}
+
+export function getPublicBasePath(): string {
+  return normalizeBasePath(
+    process.env.NEXT_PUBLIC_BASE_PATH ||
+      (process.env.GITHUB_ACTIONS === 'true' ? GITHUB_PAGES_BASE_PATH : ''),
+  );
+}
+
+export function withPublicBasePath(publicPath: string): string {
+  if (!publicPath.startsWith('/')) {
+    return publicPath;
+  }
+
+  return `${getPublicBasePath()}${publicPath}`;
+}
+
 export function getDeploymentUrl(): string | undefined {
   return (
-    process.env.NEXT_PUBLIC_BASE_PATH ||
     process.env.NEXT_PUBLIC_DEPLOYMENT_URL ||
     (process.env.NEXT_PUBLIC_SITE_URL as string | undefined) ||
     (process.env.NEXT_PUBLIC_VERCEL_URL as string | undefined) ||

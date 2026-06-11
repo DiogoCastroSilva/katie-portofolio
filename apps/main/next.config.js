@@ -5,6 +5,10 @@ const { composePlugins, withNx } = require('@nx/next');
 const createMDX = require('@next/mdx');
 
 const isGithubPages = process.env.GITHUB_ACTIONS === 'true';
+const basePath =
+  process.env.NEXT_PUBLIC_BASE_PATH ??
+  (isGithubPages ? '/katie-portofolio' : '');
+const assetPrefix = basePath ? `${basePath.replace(/\/$/, '')}/` : '';
 
 /**
  * @type {import('@nx/next/plugins/with-nx').WithNxOptions}
@@ -12,8 +16,8 @@ const isGithubPages = process.env.GITHUB_ACTIONS === 'true';
 const nextConfig = {
   output: 'export', // For GitHub Pages
   distDir: '../../public',
-  basePath: isGithubPages ? '/katie-portofolio' : '',
-  assetPrefix: isGithubPages ? '/katie-portofolio/' : '',
+  basePath,
+  assetPrefix,
   transpilePackages: [
     '@katie-portofolio/content',
     '@katie-portofolio/projects',

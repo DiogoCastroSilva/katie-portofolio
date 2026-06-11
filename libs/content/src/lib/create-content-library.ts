@@ -3,7 +3,11 @@ import matter from 'gray-matter';
 import { marked } from 'marked';
 import path from 'path';
 import 'server-only';
-import { DEPLOYMENT_PLACEHOLDER, getDeploymentUrl } from './constants';
+import {
+  DEPLOYMENT_PLACEHOLDER,
+  getDeploymentUrl,
+  withPublicBasePath,
+} from './constants';
 
 import {
   ContentItemMeta,
@@ -46,18 +50,18 @@ function resolveImage(
   if (image?.trim()) {
     const filename = path.basename(image.trim());
     if (fileExistsInDir(contentPath, filename)) {
-      return `${publicPrefix}/${filename}`;
+      return withPublicBasePath(`${publicPrefix}/${filename}`);
     }
   }
 
   for (const ext of IMAGE_EXTENSIONS) {
     const filename = `${slug}${ext}`;
     if (fileExistsInDir(contentPath, filename)) {
-      return `${publicPrefix}/${filename}`;
+      return withPublicBasePath(`${publicPrefix}/${filename}`);
     }
   }
 
-  return `${publicPrefix}/${placeholderFilename}`;
+  return withPublicBasePath(`${publicPrefix}/${placeholderFilename}`);
 }
 
 function toContentMeta(
@@ -174,14 +178,16 @@ export function createContentLibrary(
         // Matches: src="filename.ext" or src='filename.ext' (not starting with / or http)
         htmlBody = htmlBody.replace(
           /src=["'](?!\/|https?:)([^"']+)["']/g,
-          (match, imagePath) => `src="${config.publicPrefix}/${imagePath}"`,
+          (match, imagePath) =>
+            `src="${withPublicBasePath(`${config.publicPrefix}/${imagePath}`)}"`,
         );
 
         // Post-process: rewrite relative link hrefs to use the publicPrefix
         // Skip absolute URLs (http/https), anchors (#), and mailto links
         htmlBody = htmlBody.replace(
           /href=["'](?!\/|https?:|mailto:|#)([^"']+)["']/g,
-          (match, linkPath) => `href="${config.publicPrefix}/${linkPath}"`,
+          (match, linkPath) =>
+            `href="${withPublicBasePath(`${config.publicPrefix}/${linkPath}`)}"`,
         );
 
         // Determine deployment URL using shared helper
