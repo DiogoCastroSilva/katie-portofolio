@@ -1,3 +1,4 @@
+import { siteConfig } from '../../configs/site-config';
 import { AboutHero } from '../ui/AboutHero';
 import { EducationTimeline } from '../ui/EducationTimeline';
 import { ResearchInterests } from '../ui/ResearchInterests';
@@ -12,7 +13,7 @@ export const metadata = {
 export default function AboutPage() {
   return (
     <main className="flex grow flex-col gap-6 py-8">
-      <AboutHero />
+      <AboutHero email={siteConfig.email} />
       <ResearchInterests />
       <EducationTimeline />
       <SkillsGrid />

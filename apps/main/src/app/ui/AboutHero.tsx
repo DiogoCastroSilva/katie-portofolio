@@ -6,7 +6,11 @@ import profileImage from '../../assets/profile.jpeg';
 
 const PROFILE_PIC_SIZE = 500;
 
-export const AboutHero = () => {
+type AboutHeroProps = {
+  email: string;
+};
+
+export const AboutHero = ({ email }: AboutHeroProps) => {
   return (
     <section className="mx-4 rounded-2xl p-6 sm:p-12 dark:bg-sky-50">
       <motion.div
@@ -48,7 +52,7 @@ export const AboutHero = () => {
               </div>
               <div className="flex flex-wrap justify-center gap-3 md:justify-start">
                 <a
-                  href="mailto:contact@example.com"
+                  href={`mailto:${email}`}
                   className="rounded-full border-2 border-sky-600 px-6 py-2 font-medium text-sky-600 transition-all hover:bg-sky-600 hover:text-white dark:text-sky-600"
                 >
                   Get in Touch
