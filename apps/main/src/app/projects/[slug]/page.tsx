@@ -5,12 +5,22 @@ import {
 import { notFound } from 'next/navigation';
 import { ContentDetail } from '../../ui/ContentDetail';
 
+const EMPTY_SLUG = 'NON-EXISTENT-SLUG';
+
 interface ProjectPageProps {
   params: Promise<{ slug: string }>;
 }
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
-  return getAllProjects().map((project) => ({
+  const projects = getAllProjects();
+
+  if (projects.length === 0) {
+    return [{ slug: EMPTY_SLUG }];
+  }
+
+  return projects.map((project) => ({
     slug: project.slug,
   }));
 }
@@ -19,7 +29,7 @@ export async function generateMetadata({ params }: ProjectPageProps) {
   const { slug } = await params;
   const project = await getProjectContentBySlug(slug);
 
-  if (!project) {
+  if (!project || project.slug === EMPTY_SLUG) {
     return {
       title: 'Project Not Found | Kathleen Miller',
     };
@@ -35,7 +45,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const { slug } = await params;
   const project = await getProjectContentBySlug(slug);
 
-  if (!project) {
+  if (!project || project.slug === EMPTY_SLUG) {
     notFound();
   }
 

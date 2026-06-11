@@ -5,12 +5,22 @@ import {
 import { notFound } from 'next/navigation';
 import { ContentDetail } from '../../ui/ContentDetail';
 
+const EMPTY_SLUG = 'NON-EXISTENT-SLUG';
+
 interface PublicationPageProps {
   params: Promise<{ slug: string }>;
 }
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
-  return getAllPublications().map((publication) => ({
+  const publications = getAllPublications();
+
+  if (publications.length === 0) {
+    return [{ slug: EMPTY_SLUG }];
+  }
+
+  return publications.map((publication) => ({
     slug: publication.slug,
   }));
 }
@@ -37,7 +47,7 @@ export default async function PublicationPage({
   const { slug } = await params;
   const publication = await getPublicationContentBySlug(slug);
 
-  if (!publication) {
+  if (!publication || publication.slug === EMPTY_SLUG) {
     notFound();
   }
 

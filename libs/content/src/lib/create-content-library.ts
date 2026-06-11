@@ -121,6 +121,10 @@ export function createContentLibrary(
   }
 
   function getBySlug(slug: string): ContentMeta | undefined {
+    if (!slug?.trim() || typeof slug !== 'string') {
+      return undefined;
+    }
+
     for (const ext of ['.md', '.mdx'] as const) {
       const fileName = `${slug}${ext}`;
       const filePath = path.join(contentPath, fileName);
@@ -144,6 +148,10 @@ export function createContentLibrary(
     slug: string,
   ): Promise<ContentItemMeta | undefined> {
     return (async () => {
+      if (!slug?.trimEnd() || typeof slug !== 'string') {
+        return undefined;
+      }
+
       for (const ext of ['.md', '.mdx'] as const) {
         const fileName = `${slug}${ext}`;
         const filePath = path.join(contentPath, fileName);
