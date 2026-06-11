@@ -7,4 +7,12 @@ export const siteConfig = {
   contentLicenseUrl: 'https://creativecommons.org/licenses/by-nc-nd/4.0/',
   repoLicenseName: 'MIT',
   repoLicenseUrl: 'https://opensource.org/licenses/MIT',
+  analytics: {
+    cloudflare: {
+      token:
+        process.env.NEXT_PUBLIC_CLOUDFLARE_ANALYTICS_TOKEN ??
+        '613324dfdf5043a19a5a8f040a7b180b',
+      enabled: process.env.NEXT_PUBLIC_CLOUDFLARE_ANALYTICS_DISABLED !== 'true',
+    },
+  },
 };

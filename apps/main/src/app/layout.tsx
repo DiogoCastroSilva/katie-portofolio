@@ -1,5 +1,6 @@
 import { NavBar } from '@katie-portofolio/navigation';
 import './global.css';
+import { CloudflareAnalytics } from './ui/CloudflareAnalytics';
 import { Footer } from './ui/Footer';
 
 export const metadata = {
@@ -24,6 +25,7 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
         </div>
+        <CloudflareAnalytics />
       </body>
     </html>
   );
