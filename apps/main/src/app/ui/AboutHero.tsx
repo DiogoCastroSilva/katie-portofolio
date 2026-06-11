@@ -67,18 +67,19 @@ export const AboutHero = () => {
         >
           <h2 className="text-2xl font-bold md:text-3xl">About Me</h2>
           <p className="text-lg leading-relaxed text-gray-800 dark:text-gray-400">
-            I'm a PhD researcher passionate about leveraging Earth observation
-            technology and data-driven approaches to address critical
-            environmental challenges. My work bridges remote sensing, geospatial
-            analysis, and climate science to develop scalable solutions for
-            climate change mitigation and adaptation.
+            I&apos;m a PhD researcher passionate about leveraging Earth
+            observation technology and data-driven approaches to address
+            critical environmental challenges. My work bridges remote sensing,
+            geospatial analysis, and climate science to develop scalable
+            solutions for climate change mitigation and adaptation.
           </p>
           <p className="text-lg leading-relaxed text-gray-800 dark:text-gray-400">
             With expertise in hyperspectral and multispectral imagery analysis,
             machine learning applications in environmental monitoring, and
-            collaborative research with interdisciplinary teams, I'm focused on
-            translating complex Earth observation data into actionable insights
-            that support environmental sustainability and decision-making.
+            collaborative research with interdisciplinary teams, I&apos;m
+            focused on translating complex Earth observation data into
+            actionable insights that support environmental sustainability and
+            decision-making.
           </p>
         </motion.div>
       </motion.div>

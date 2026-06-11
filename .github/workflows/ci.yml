@@ -1,10 +1,13 @@
 name: CI & Deploy
-
 on:
   push:
     branches:
       - main
   pull_request:
+
+    # Workflow level: Available to all jobs and steps
+env:
+  NX_NO_CLOUD: true
 
 jobs:
   # 1️⃣ Continuous Integration (Lint, Test, Build)

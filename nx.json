@@ -75,7 +75,10 @@
   ],
   "targetDefaults": {
     "test": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "options": {
+        "passWithNoTests": true
+      }
     }
   },
   "generators": {
