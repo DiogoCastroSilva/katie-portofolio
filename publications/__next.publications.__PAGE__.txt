@@ -2,5 +2,5 @@
 2:I[9381,["175","static/chunks/175-bc1c6f042c0fad9b.js","825","static/chunks/825-b044cae44aaa2fc2.js","539","static/chunks/539-52f2b0aea1d2fa71.js","381","static/chunks/381-f9db84f004478da1.js","352","static/chunks/app/publications/page-f7267f1d1392c998.js"],"ContentCardSection"]
 3:I[887,[],"OutletBoundary"]
 4:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","main",null,{"className":"flex grow flex-col gap-4 py-8","children":["$","$L2",null,{"heading":"Publications","headingId":"publications-heading","items":[],"hrefPrefix":"/publications","emptyMessage":"Publications are coming soon."}]}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"T30JSNrWvXxw8ln2vdzk8"}
+0:{"rsc":["$","$1","c",{"children":[["$","main",null,{"className":"flex grow flex-col gap-4 py-8","children":["$","$L2",null,{"heading":"Publications","headingId":"publications-heading","items":[],"hrefPrefix":"/publications","emptyMessage":"Publications are coming soon."}]}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"0T0H5_DH2ZM1kkStsx5K3"}
 5:null
