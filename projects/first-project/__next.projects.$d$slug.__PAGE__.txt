@@ -1,0 +1,32 @@
+1:"$Sreact.fragment"
+2:I[4530,["175","static/chunks/175-d23f6520bd8b2191.js","419","static/chunks/app/projects/%5Bslug%5D/page-96d3b41ebb3eb89f.js"],"ContentDetail"]
+4:I[887,[],"OutletBoundary"]
+5:"$Sreact.suspense"
+3:T8f0,<h2><b>Summary:</b></h2>
+<p>This project from the Fall 2025 NASA DEVELOP term was conducted in partnership with the Lodi Winegrape Commission, NASA Acres, and the Gold Lab at Cornell University to develop and test a scalable grapevine virus (GLRaV-3) detection model using Earth observations. The team developed a random forest classification model using hyperspectral imagery from EMIT and multispectral imagery from Sentinel-2 MSI to classify vineyard areas based on the presence of virus symptoms. The EMIT-based model showed greater sensitivity to areas with higher densities of symptomatic vines than the Sentinel-2 model, suggesting that hyperspectral data may be more suitable for detecting virus symptoms. These findings indicate that spectral resolution may be more critical than spatial resolution for this application.</p>
+<br>
+<div class="flex gap-4">
+  <figure class="flex w-1/2">
+    <img src="/projects/test-emit.jpeg" alt="Alt 1" class="w-full rounded" />
+  </figure>
+  <figure class="flex w-1/2">
+    <img src="/projects/sentinel.jpeg" alt="Alt 2" class="w-full rounded" />
+  </figure>
+</div>
+
+<br>
+
+<p>The team assessed how and where the spectral signatures might differ between areas with high and low infection. EMIT shows a clear difference between high- and low-infection areas, while Sentinel-2 shows only subtle, overlapping differences, limiting its ability to reliably distinguish between infection levels.</p>
+<br>
+
+<p><img src="/projects/emit.jpeg" alt="Third image"></p>
+<br>
+
+<p>EMIT random forest model predictions for GLRaV-3 symptomatic classes. Model predictions were made by applying the best performing random forest model to PCA-transformed EMIT imagery of Lodi vineyards from August and September, 2022–2024.</p>
+<br>
+
+<p><b>Team:</b> Audrey Chin, Noah Larkin, Derek Gonzalez, Monica Napoles Serrano, <a href="/projects/DEPLOYMENT_URL">Kathleen Miller (Lead)</a></p>
+<p><b>Paper:</b> <a href="https://ntrs.nasa.gov/citations/20250011141" class="external-link" target="_blank" rel="noopener noreferrer">https://ntrs.nasa.gov/citations/20250011141</a></p>
+<p><b>Presentation:</b> <a href="https://ntrs.nasa.gov/citations/20250010829" class="external-link" target="_blank" rel="noopener noreferrer">https://ntrs.nasa.gov/citations/20250010829</a></p>
+0:{"rsc":["$","$1","c",{"children":[["$","main",null,{"className":"mx-4 flex grow flex-col rounded-2xl dark:bg-sky-50","children":["$","$L2",null,{"content":{"slug":"first-project","title":"Grapevine virus detection in Lodi, California","date":"2025-11-01","tags":["intro","welcome"],"excerpt":"Field notes from grapevine virus screening in Lodi, California.","image":"first-project.jpeg","imageSrc":"/projects/first-project.jpeg","body":"$3"}}]}],null,["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"apNIDdBkcl3kluugl_iWY"}
+6:null
