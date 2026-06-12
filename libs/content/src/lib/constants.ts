@@ -1,7 +1,5 @@
 export const DEPLOYMENT_PLACEHOLDER = 'DEPLOYMENT_URL';
 
-const GITHUB_PAGES_BASE_PATH = '/katie-portofolio';
-
 function normalizeBasePath(basePath?: string): string {
   if (!basePath?.trim() || basePath === '/') {
     return '';
@@ -11,10 +9,7 @@ function normalizeBasePath(basePath?: string): string {
 }
 
 export function getPublicBasePath(): string {
-  return normalizeBasePath(
-    process.env.NEXT_PUBLIC_BASE_PATH ||
-      (process.env.GITHUB_ACTIONS === 'true' ? GITHUB_PAGES_BASE_PATH : ''),
-  );
+  return normalizeBasePath(process.env.NEXT_PUBLIC_BASE_PATH);
 }
 
 export function withPublicBasePath(publicPath: string): string {

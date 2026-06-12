@@ -1,21 +1,19 @@
 //@ts-check
 
 const path = require('path');
+const { PHASE_DEVELOPMENT_SERVER } = require('next/constants');
 const { composePlugins, withNx } = require('@nx/next');
 const createMDX = require('@next/mdx');
 
-const isGithubPages = process.env.GITHUB_ACTIONS === 'true';
-const basePath =
-  process.env.NEXT_PUBLIC_BASE_PATH ??
-  (isGithubPages ? '/katie-portofolio' : '');
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 const assetPrefix = basePath ? `${basePath.replace(/\/$/, '')}/` : '';
 
 /**
  * @type {import('@nx/next/plugins/with-nx').WithNxOptions}
  **/
-const nextConfig = {
+const createNextConfig = (phase) => ({
   output: 'export', // For GitHub Pages
-  distDir: '../../public',
+  distDir: phase === PHASE_DEVELOPMENT_SERVER ? '.next' : '../../public',
   basePath,
   assetPrefix,
   transpilePackages: [
@@ -41,7 +39,7 @@ const nextConfig = {
   // Use this to set Nx-specific options
   // See: https://nx.dev/recipes/next/next-config-setup
   nx: {},
-};
+});
 
 const withMDX = createMDX({
   options: {
@@ -56,4 +54,5 @@ const plugins = [
   withMDX,
 ];
 
-module.exports = composePlugins(...plugins)(nextConfig);
+module.exports = async (phase, context) =>
+  composePlugins(...plugins)(createNextConfig(phase))(phase, context);
